@@ -82,11 +82,11 @@ publishing {
 
         repositories {
             maven {
-                name="com.kingmakers.analytics"
-                url = uri("https://pkgs.dev.azure.com/BetagyDevOps/Kingmakers-Android/_packaging/com.kingmakers.analytics/maven/v1")
+                name="com.example.kmmlibrarypoc"
+                url = uri("https://github.com/TonyAndroid1991/KMMLibraryPOC")
                 credentials {
-                    username = "${project.properties["kingmakersUser"]}"
-                    password = "${project.properties["kingmakersToken"]}"
+                    username = "kingmakersUser"
+                    password = "kingmakersToken"
                 }
                 authentication {
                     create<BasicAuthentication>("basic")
@@ -96,18 +96,18 @@ publishing {
     }
 }
 
-tasks.register<Zip>("buildIosFramework") {
-    dependsOn("podPublishReleaseXCFramework")
-    from(layout.buildDirectory.dir("cocoapods/publish/release/"))
-    destinationDirectory.set(layout.buildDirectory.dir("cocoapods/publish/"))
-    archiveFileName.set("shared.zip")
-}
-
-tasks.register("publishIosFrameworkToMaven") {
-    dependsOn("buildIosFramework")
-    dependsOn("publishIOSFrameworkPublicationToCom.kingmakers.analyticsRepository")
-    tasks.findByName("publishIOSFrameworkPublicationToCom.kingmakers.analyticsRepository")?.mustRunAfter("buildIosFramework")
-}
+//tasks.register<Zip>("buildIosFramework") {
+//    dependsOn("podPublishReleaseXCFramework")
+//    from(layout.buildDirectory.dir("cocoapods/publish/release/"))
+//    destinationDirectory.set(layout.buildDirectory.dir("cocoapods/publish/"))
+//    archiveFileName.set("shared.zip")
+//}
+//
+//tasks.register("publishIosFrameworkToMaven") {
+//    dependsOn("buildIosFramework")
+//    dependsOn("publishIOSFrameworkPublicationToCom.kingmakers.analyticsRepository")
+//    tasks.findByName("publishIOSFrameworkPublicationToCom.kingmakers.analyticsRepository")?.mustRunAfter("buildIosFramework")
+//}
 
 
 dependencies {
